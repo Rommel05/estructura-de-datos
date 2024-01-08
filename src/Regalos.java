@@ -1,9 +1,11 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 
 public class Regalos {
     public static void main(String[] args) {
-        ArrayList<Integer> portales = new ArrayList<>();
+        ArrayList<Integer> portales = new ArrayList<>(Arrays.asList(2, 5, 1));
+        System.out.println(repartir(3, portales));
         int desde;
         int aterriza;
     }
@@ -11,7 +13,7 @@ public class Regalos {
         int diff, min = Integer.MAX_VALUE;
         int index = 0;
         for (int i = 0; i < portales.size(); i++) {
-            diff = Math.abs(portales.size() - desde);
+            diff = Math.abs(portales.get(i) - desde);
             if (diff <= min){
                 min = diff;
                 index = i;
@@ -26,7 +28,7 @@ public class Regalos {
         while (!portales.isEmpty()) {
             actual = siguiente(portales, actual);
             result += actual + " ";
-            portales.remove(actual);
+            portales.remove(Integer.valueOf(actual));
         }
         return result;
     }
